@@ -25,7 +25,7 @@
 `firewall-cmd --list-all-zones`
 
 + 查看
-`firewall-cmd --zone= public --query-port=80/tcp`
+`firewall-cmd --zone=public --query-port=80/tcp`
 
 ## 服务
 
