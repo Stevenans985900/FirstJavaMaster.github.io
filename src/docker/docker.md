@@ -10,12 +10,7 @@
 2. 参考[https://blog.csdn.net/go_d_og/article/details/75675159](https://blog.csdn.net/go_d_og/article/details/75675159)进行安装.完成后系统的托盘会有docker的蓝鲸图标.
 3. 右击蓝鲸图标, 点击`settings`, 进入设置.
 4. 选中左侧`General`, 勾选`Expose daemon on tcp://localhsot:2375 without TLS`, 用于idea进行连接.
-5. 选中左侧`Daemon`, `Insecure registries` (用于配置允许http代替https请求的地址)中添加
-    1. `nexus.idx365.com:8082`
-    2. `nexus.idx365.com:8083`
-    
-    `Registry mirrors` (用于配置加速镜像代理)中添加
-    1. `http://nexus.idx365.com:8082`
+5. 选中左侧`Daemon`, 在`Registry mirrors`框中(用于配置加速镜像代理)中添加`https://nexus.idx365.com:8092`
 
 确认前面的步骤没有错误提示即代表windows上的docker环境已经准备完成.
 
