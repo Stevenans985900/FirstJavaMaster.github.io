@@ -15,3 +15,14 @@
 + 查看内核
 `yum install lsb –y`
 `lsb_release -a`
+
++ vim tab to 4 space
+
+编辑/etc/vimrc文件,添加下面的内容
+
+```
+" vim tab to 4 space
+set ts=4
+set expandtab
+set autoindent
+```
