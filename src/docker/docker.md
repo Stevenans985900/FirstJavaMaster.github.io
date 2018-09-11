@@ -30,6 +30,13 @@
 
 在`daemon.json`文件中, 添加一个字段: `"hosts": ["tcp://0.0.0.0:2375","unix:///var/run/docker.sock"]`. 其中的"0.0.0.0"代表任何ip均可远程访问.
 
+然后执行命令:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
 
 ## IDEA配置远程docker
 
