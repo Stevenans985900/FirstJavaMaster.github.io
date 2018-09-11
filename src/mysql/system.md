@@ -4,7 +4,7 @@
 
 + 查询表格字段设计
 
-```mysql
+```
 select
   TABLE_NAME,
   COLUMN_NAME,
