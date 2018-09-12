@@ -26,3 +26,6 @@ set ts=4
 set expandtab
 set autoindent
 ```
+
+踢掉某用户
+`pkill -kill -t pts/1`
