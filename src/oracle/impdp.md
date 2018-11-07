@@ -19,15 +19,9 @@ impdp命令直接在命令行(cmd/bash)下直接用,不必登录oracle.只能导
 `sqlplus / as sysdba`
 
 + 创建表空间
-```
-create tablespace topicis_tablespace
-logging
-datafile '/db-data/topicis.dbf' 
-size 1g 
-autoextend on 
-next 32m maxsize unlimited 
-extent management local;
-```
+`create tablespace topicis_tablespace logging datafile '/db-data/topicis.dbf' size 1g autoextend on next 32m maxsize unlimited extent management local;`
+
+> 要保证`/db-data`目录存在,否则报错
 
 + 创建用户
 `create user topicis identified by topicis;`
@@ -36,20 +30,16 @@ extent management local;
 `alter user topicis default tablespace topicis_tablespace;`
 
 + 赋予权限
-```
-grant 
-create any directory,
-create session,
-create table,
-create view,
-unlimited tablespace
-to topicis;
-```
+`grant create any directory, create session, create table, create view, unlimited tablespace to topicis;`
 
-+ 创建`directory`
++ 创建directory
+
 `create or replace directory dmpdir as '/db-dir/topicis';`
 
-+ 导入数据
++ 退出sql操作窗口,导入数据
+
+`exit`
+
 `impdp topicis/topicis directory=dmpdir dumpfile=test.dmp full=y;`
 
 
@@ -62,6 +52,9 @@ to topicis;
 
 + 删除表空间
 `drop tablespace topicis_tablespace including contents and datafiles;`
+
++ 有时可能会提示DBA权限,此时为新用户添加权限即可
+`grant imp_full_database to topicis;`
 
 
 
