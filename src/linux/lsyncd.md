@@ -19,6 +19,8 @@ yum install lsyncd
 
 注释其默认的配置,并添加自己的规则.
 
+`sudo vim /etc/lsyncd.conf`
+
 ```text
 
 ----
@@ -31,7 +33,7 @@ yum install lsyncd
 --sync{default.rsyncssh, source="/var/www/html", host="localhost", targetdir="/tmp/htmlcopy/"}
 
 settings {
-    logfile = "/var/logs/lsyncd.log",
+    logfile = "/var/log/lsyncd/running.log",
     maxDelays = 5
 }
 
