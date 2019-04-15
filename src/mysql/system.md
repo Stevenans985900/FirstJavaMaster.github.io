@@ -57,8 +57,12 @@ where TABLE_SCHEMA = 'index_center';
 + 查看权限
 `show grants for 'slkj';`
 
-+ 给用户 slkj 赋予所有库的所有权限  
++ 给用户 slkj 赋予所有库的所有权限
+  + MySQL7.X及以下
 `GRANT ALL PRIVILEGES ON *.* TO 'slkj'@'%' IDENTIFIED BY 'idx365' WITH GRANT OPTION;`
+
+  + MySQL8.X
+`GRANT ALL PRIVILEGES ON *.* TO 'slkj'@'%';`
 
 + 重新载入赋权表  
 `FLUSH PRIVILEGES;`
@@ -70,6 +74,8 @@ where TABLE_SCHEMA = 'index_center';
 `REVOKE GRANT OPTION ON *.* FROM slkj;`
 
 
+### MySQL 8 的密码加密
+
 > SQLyog需要使用'mysql_native_password'身份验证方法进行连接。 Oracle引入了“caching_sha2_password”，并在MySQL 8.0中将其设置为默认值。 但是这个新的身份验证方法在客户端代码中还没有插件支持，我们在SQLyog（MariaDB的“Connector/C”）中使用。 实际上，只有来自Oracle的客户端和连接器才能使用新的认证插件。
 > 
 > 所以,在mysql 8.0中,涉及到用户的密码添加/修改操作时,需要将类似
@@ -80,10 +86,8 @@ where TABLE_SCHEMA = 'index_center';
 > 
 > `IDENTIFIED WITH mysql_native_password BY 'mypass'`
 
-## 数据操作
 
-+ 备份数据库
-`mysqldump -ucloud -p index_cloud > data.sql;`
+## 存储过程操作
 
 + 备份存储过程
 `mysqldump -uslkj -p -n -d -t -R spider_ncp > tong-pro.sql`
@@ -98,17 +102,6 @@ WHERE BINARY ROUTINE_SCHEMA = 'demo' AND ROUTINE_TYPE = 'PROCEDURE';
 + 删除存储过程:
 `DROP PROCEDURE demo.dali;`
 
-+ 导出成csv文件
-
-```
-select *
-from bm_whcd
-into outfile '/tmp/test.csv'
-fields terminated by ','
-  optionally enclosed by '"'
-  escaped by '"'
-lines terminated by '\r\n';
-```
 
 ## 其他
 
