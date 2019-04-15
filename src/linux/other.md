@@ -1,5 +1,27 @@
 # 其他
 
+## 开机启动
+
+### centos 6
+
+使用chkconfig命令即可。我们以apache服务为例：
+
+`chkconfig --add apache` 添加nginx服务
+
+`chkconfig apache on` 开机自启nginx服务
+
+`chkconfig apache off` 关闭开机自启
+
+`chkconfig --list | grep apache` 查看
+
+### centos 7
+使用systemctl中的enable、disable 即可。示例：
+
+`systemctl enable apache.service` 开机自启apache服务
+
+`systemctl disable apache.service` 关闭开机自启
+
+
 ## 系统
 
 + 查看网络连接
@@ -29,3 +51,19 @@ set autoindent
 
 踢掉某用户
 `pkill -kill -t pts/1`
+
+## 控制root用户的ssh登录
+
+编辑文件
+
+`sudo vi /etc/ssh/sshd_config`
+
+`PermitRootLogin`这个参数，它的值可以为`yes/no/without-password`
+
+```
+yes #允许root用户以任何认证方式登录（貌似也就两种认证方式：用户名密码认证，公钥认证）
+
+without-password #只允许root用public key认证方式登录
+
+no #不允许root用户以任何认证方式登录
+```
