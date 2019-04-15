@@ -42,6 +42,10 @@ impdp命令直接在命令行(cmd/bash)下直接用,不必登录oracle.只能导
 
 `impdp topicis/topicis directory=dmpdir dumpfile=test.dmp full=y;`
 
+或者
+
+`imp topicis/topicis file=tmp_reg.dmp log=import2.log full=y ignore=y;`
+
 
 正常情况下,数据库表会自动创建,数据可以顺利导入.
 
