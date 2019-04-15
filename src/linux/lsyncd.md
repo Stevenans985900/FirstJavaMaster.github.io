@@ -9,7 +9,7 @@ rsync默认已经安装在centOS系统中.
 可直接通过yum进行安装
 
 ```bash
-yum install lsyncd
+sudo yum install lsyncd
 ```
 
 安装完成后,其配置文件位于`/etc/lsyncd.conf`
@@ -39,11 +39,10 @@ settings {
 
 sync {
     default.rsyncssh,
-    source = "/data/backups/localhost",
+    source = "/data/backups/mysql",
     host = "192.168.2.52",
     targetdir = "/data/backups/192.168.2.51",
-    maxDelays = 5,
-    delay = 30,
+    delay = 60,
     rsync = {
         archive = true,
         compress = true,
