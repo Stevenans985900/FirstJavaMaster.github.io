@@ -108,8 +108,29 @@ WHERE BINARY ROUTINE_SCHEMA = 'demo' AND ROUTINE_TYPE = 'PROCEDURE';
 + 显示警告(上次执行的语句)
 `show warnings;`
 
-
 + 查看安全目录:
 `SHOW VARIABLES LIKE 'secure_file_priv';`
 
 
+## ONLY_FULL_GROUP_BY
+
+在MySQL5.7+的版本中,默认开启了一项配置:`ONLY_FULL_GROUP_BY`.此项配置不允许在分组命令中显示其他列的数据.
+
+查询是否开启
+```
+SELECT @@GLOBAL.sql_mode;
+SELECT @@SESSION.sql_mode;
+```
+
+快速关闭
+```
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+```
+
+若要永久生效,则修改配置文件`/etc/my.cnf`,在`[mysqld]`下面添加:
+```
+[mysqld]  
+sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+```
+
+上面配置项的内容建议以当前数据库运行中的值为准
