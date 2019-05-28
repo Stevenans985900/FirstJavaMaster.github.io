@@ -20,4 +20,7 @@ proxy_set_header X-Forwarded-Proto "https";
 ./acme.sh --issue -d *.idx365.com --dns --yes-I-know-dns-manual-mode-enough-go-ahead-please
 ```
 
-可能会提示将新的TEXT记录设置解析,照做后重新运行它提示的命令即可.
+可能会提示将新的TEXT记录设置解析,照做后重新运行它提示的命令即可:
+```
+acme.sh --renew -d *.idx365.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
+```
