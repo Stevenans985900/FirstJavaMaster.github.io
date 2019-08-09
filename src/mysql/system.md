@@ -68,7 +68,7 @@ where TABLE_SCHEMA = 'index_center';
 `FLUSH PRIVILEGES;`
   
 + 收回权限(不包含赋权权限)
-`REVOKE ALL PRIVILEGES ON slkj.* FROM slkj;  `
+`REVOKE ALL PRIVILEGES ON slkj.* FROM slkj;`
 
 + 收回赋权权限  
 `REVOKE GRANT OPTION ON *.* FROM slkj;`
@@ -80,11 +80,11 @@ where TABLE_SCHEMA = 'index_center';
 > 
 > 所以,在mysql 8.0中,涉及到用户的密码添加/修改操作时,需要将类似
 > 
-> `IDENTIFIED BY 'mypass'`
+> `ALTER USER 'slkj'@'%' IDENTIFIED BY 'MyNewPass4!';`
 > 
 > 的语句改为
 > 
-> `IDENTIFIED WITH mysql_native_password BY 'mypass'`
+> `ALTER USER 'slkj'@'%' IDENTIFIED WITH mysql_native_password BY 'mypass';`
 
 
 ## 存储过程操作

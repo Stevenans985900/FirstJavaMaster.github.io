@@ -14,6 +14,10 @@ proxy_set_header X-Forwarded-Proto "https";
 
 ### 证书申请/更新
 
+检测SSL证书状态
+
+    openssl x509 -in \*.idx365.com.cer -noout -text
+
 如果申请泛域名,则最好是使用DNS验证的方式
 
 ```
