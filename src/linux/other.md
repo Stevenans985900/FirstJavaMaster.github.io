@@ -21,6 +21,10 @@
 
 `systemctl disable apache.service` 关闭开机自启
 
+查看列表
+
+    systemctl list-unit-files
+
 
 ## 系统
 
@@ -37,6 +41,9 @@
 + 查看内核
 `yum install lsb –y`
 `lsb_release -a`
+
++ 修改ssh登录配置文件
+`sudo vim /etc/ssh/sshd_config`
 
 + vim tab to 4 space
 
